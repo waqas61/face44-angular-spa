@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { User } from './../user';
-
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,11 +11,11 @@ import { User } from './../user';
 })
 export class UserListComponent implements OnInit {
 
-	displayedColumns: string[] = ['first_name', 'last_name','email', 'phone'];
+	displayedColumns: string[] = ['first_name', 'last_name','email', 'phone' ,'action'];
 	data: User[] = [];
 	isLoadingResults = true;
 
-	constructor(private api: ApiService) { }
+	constructor(private api: ApiService,private router: Router) { }
 
 	ngOnInit() {
 		this.api.getUsers().subscribe(res => {
@@ -27,4 +27,20 @@ export class UserListComponent implements OnInit {
 			this.isLoadingResults = false;
 		});
 	}
+
+	deleteUser(id) {
+	  this.isLoadingResults = true;
+	  this.api.deleteUser(id)
+	    .subscribe(res => {
+	        this.isLoadingResults = false;
+	        this.router.navigate(['user-list']);
+	      }, (err) => {
+	        console.log(err);
+	        this.isLoadingResults = false;
+	      }
+	    );
+	}
+
+
+
 }

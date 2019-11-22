@@ -11,7 +11,7 @@ import { UserAddComponent } from './user-add/user-add.component';
 
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserFormService } from './user-form.service';
-
+import { RouterModule, Routes } from '@angular/router';
 
 import { 
           MatInputModule,MatPaginatorModule,MatProgressSpinnerModule,MatSortModule, MatTableModule,
@@ -35,7 +35,8 @@ import {
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    FormModule
+    FormModule,
+    RouterModule
   ],
   providers: [
     UserFormService

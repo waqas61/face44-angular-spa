@@ -30,7 +30,13 @@ export class ApiService {
 	  );
 	}
 
+	deleteUser (id): Observable<User> {
+	  const url = `${this.baseUri}/${id}`;
 
+	  return this.http.delete<User>(url, this.httpOptions).pipe(
+	    catchError(this.handleError<User>('deleteUser'))
+	  );
+	}
 	private handleError<T> (operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			return of(result as T);
