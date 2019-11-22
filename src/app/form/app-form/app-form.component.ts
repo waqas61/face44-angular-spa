@@ -31,15 +31,9 @@ export class AppFormComponent implements OnInit {
 
   ngOnInit() {
 
-
-    console.log("form111111111111" , this.form);
-
   	const user_form = this.user_form;
 
   	this.form = this.fcs.toFormGroup(this.form_fields);
-
-    console.log("form2222222222222222222" , this.form);
-
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.user_form.component);
     const viewContainerRef = this.appHostForm.viewContainerRef;
