@@ -20,7 +20,7 @@ export class UserFormComponent implements OnInit, FormInterface {
 	form_fields: FormBase<any>[];
 	user_form: FormFactory;
 	form : FormGroup;
-
+	isLoadingResults : false;
 	constructor( private fcs: FormControlService, private service: UserFormService , private api: ApiService,private router: Router) {}
 
 	ngOnInit() {
@@ -28,26 +28,21 @@ export class UserFormComponent implements OnInit, FormInterface {
 		this.user_form   = this.service.getUserFormModel();
 		this.form = this.fcs.toFormGroup(this.form_fields);
 	}
-	get isValid() { return true;}
+
 
 	onSubmit() {
+		this.isLoadingResults = true;
 		this.api.addUser(this.form.value).subscribe(res => {
+			
 			this.router.navigate(['user-list']);
 			console.log(res);
 		}, err => {
+			this.isLoadingResults = false;
 			console.log(err);
 		});
 		console.log(JSON.stringify(this.form.value));
 	}
 
-	//@Input() form_data: any;
-	//@Input() form_fields: any;
-	//@Input() user_form: any;
-	//form: FormGroup; 
-	//constructor( private fcs: FormControlService ) {}
-	//ngOnInit() {this.form = this.fcs.toFormGroup(this.form_fields);}
-	//get isValid() { return true;}
-	//onSubmit() {console.log(JSON.stringify(this.form.value));}
 }
 
 

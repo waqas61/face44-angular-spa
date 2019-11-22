@@ -1,5 +1,8 @@
 <div>
 	<label> User Form Test </label>
+	<div class="user-loading-shade" *ngIf="isLoadingResults">
+		<mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+	</div>
 	<form (ngSubmit)="onSubmit()"  [formGroup]="form">
 
 			<div *ngFor="let question of form_fields" class="form-row">
@@ -7,7 +10,7 @@
 			</div>
 
 		<div class="form-row">
-			<button type="submit" >Save</button>
+			<button type="submit"  >Save</button>
 		</div>
 	</form>
 </div>
