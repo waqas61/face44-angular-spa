@@ -9,7 +9,7 @@ import { User } from './../user/user';
 })
 export class ApiService {
 
-	baseUri:string = 'http://www.laravel-angular.com/api/v1/user';
+	baseUri:string = 'http://www.face44-laravel-api.com/api/user';
   	constructor(private http: HttpClient) { }
 
 	getUsers (): Observable<User[]> {
