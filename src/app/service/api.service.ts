@@ -24,7 +24,6 @@ export class ApiService {
 
 
 	addUser (user): Observable<User> {
-
 	  return this.http.post<User>(this.baseUri, user, this.httpOptions).pipe(
 	    catchError(this.handleError<User>('addUser'))
 	  );

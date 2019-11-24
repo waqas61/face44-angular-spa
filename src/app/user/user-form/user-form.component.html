@@ -4,11 +4,9 @@
 		<mat-spinner *ngIf="isLoadingResults"></mat-spinner>
 	</div>
 	<form (ngSubmit)="onSubmit()"  [formGroup]="form">
-
 			<div *ngFor="let question of form_fields" class="form-row">
-			  <app-form-field [form_fields]="question" [form]="form"></app-form-field>
+			  <app-form-field [form_fields]="question" [form]="form" [submitted]="submitted"></app-form-field>
 			</div>
-
 		<div class="form-row">
 			<button type="submit"  >Save</button>
 		</div>

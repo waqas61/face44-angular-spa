@@ -12,7 +12,8 @@ import {Router} from "@angular/router";
 export class UserListComponent implements OnInit {
 
 	displayedColumns: string[] = ['first_name', 'last_name','email', 'phone' ,'action'];
-	data: User[] = [];
+	//data: User[] = [];
+	data: Array<User> = [];
 	isLoadingResults = true;
 
 	constructor(private api: ApiService,private router: Router) { }

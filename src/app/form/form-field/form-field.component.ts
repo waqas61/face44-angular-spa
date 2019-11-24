@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'; 
 import { FormGroup }        from '@angular/forms';
 import { FormBase }  from './../form-base';
 
@@ -12,13 +12,13 @@ import { FormBase }  from './../form-base';
 export class FormFieldComponent implements OnInit {
   @Input() form_fields: FormBase<any>;
   @Input() form: FormGroup;
+  @Input() submitted;
+  
   constructor() {
-
   }
   ngOnInit() {
 
   }
-  get isValid() {
-   return this.form.controls[this.form_fields.key].valid; 
-  }
+
+  log(val) { console.log('Template === >>  ',val); }
 }

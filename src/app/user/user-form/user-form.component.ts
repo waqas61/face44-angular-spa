@@ -1,6 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { FormGroup }        from '@angular/forms';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormBase }      from   './../../form/form-base';
 import { FormInterface } from   './../../form/form-interface';
 import { FormFactory }  from './../../form/form-factory';
@@ -16,33 +15,31 @@ import {Router} from "@angular/router";
 })
 export class UserFormComponent implements OnInit, FormInterface {
 	
-	form_data: any;
 	form_fields: FormBase<any>[];
-	user_form: FormFactory;
 	form : FormGroup;
-	isLoadingResults : false;
-	constructor( private fcs: FormControlService, private service: UserFormService , private api: ApiService,private router: Router) {}
+	isLoadingResults : boolean =  false;
+	submitted = false;
+	constructor(private fcs: FormControlService, private service: UserFormService , private api: ApiService,private router: Router) {}
 
 	ngOnInit() {
 		this.form_fields = this.service.getUserForm();
-		this.user_form   = this.service.getUserFormModel();
 		this.form = this.fcs.toFormGroup(this.form_fields);
 	}
 
-
 	onSubmit() {
-		this.isLoadingResults = true;
+		this.submitted = true;
+        if (this.form.invalid) {
+            return;
+        }
 		this.api.addUser(this.form.value).subscribe(res => {
-			
+			this.isLoadingResults = true;
 			this.router.navigate(['user-list']);
 			console.log(res);
 		}, err => {
 			this.isLoadingResults = false;
 			console.log(err);
 		});
-		console.log(JSON.stringify(this.form.value));
 	}
-
 }
 
 

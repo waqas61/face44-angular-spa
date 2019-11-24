@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { FormFactory }  from './../form/form-factory';
+
 import { FormBase }     from './../form/form-base';
 import { TextboxControl }  from './../form/control/textbox-control';
 
-import { UserFormComponent } from './user-form/user-form.component';
 
 @Injectable()
 export class UserFormService {
-
-  getUserFormModel(){
-      return new FormFactory(UserFormComponent, {name: 'Bombasto', bio: 'Brave as they come'})
-  }
 
   getUserForm() {
 
@@ -37,6 +32,7 @@ export class UserFormService {
         key: 'email',
         label: 'Email',
         type: 'email',
+        required: true,
         order: 3
       }),
 

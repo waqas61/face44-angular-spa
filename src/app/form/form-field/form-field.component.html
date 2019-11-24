@@ -11,6 +11,9 @@
     </select>
 
   </div> 
+  
+<div *ngIf="submitted && form.controls[form_fields.key].errors" >
+    <div *ngIf="form.controls[form_fields.key].errors.required">{{form_fields.label}} is required</div>
+</div>
 
-  <div class="errorMessage" *ngIf="!isValid">{{form_fields.label}} is required</div>
 </div>

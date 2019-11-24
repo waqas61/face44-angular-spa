@@ -11,8 +11,13 @@ export class FormControlService {
   toFormGroup(fields: FormBase<any>[] ) {
     let group: any = {};
     fields.forEach(field => {
-      group[field.key] = field.required ? new FormControl(field.value || '', Validators.required)
+      if(field.key == 'email'){
+       group[field.key] = field.required ? new FormControl(field.value || '', [Validators.required, Validators.email])
+                                              : new FormControl(field.value || '');   
+      }else{
+        group[field.key] = field.required ? new FormControl(field.value || '', Validators.required)
                                               : new FormControl(field.value || '');
+      }
     });
     return new FormGroup(group);
   }

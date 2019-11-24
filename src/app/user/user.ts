@@ -1,7 +1,8 @@
 export class User {
-   id : number;
-   first_name: string;
-   last_name: string;
-   email: string;
-   phone: number;
+   public id : number = null;
+   public first_name: string = null;
+   public last_name: string = null;
+   public email: string = null;
+   public phone: number = null;
 }
+
