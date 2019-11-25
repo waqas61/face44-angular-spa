@@ -19,6 +19,7 @@
 	    <div class="row">
 	        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 	            <div class="card">
+
 	                <div class="card-body">
 						<div class="user-loading-shade" *ngIf="isLoadingResults">
 							<mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -53,7 +54,10 @@
 							    	
 							    <mat-card-actions>
 							      <a mat-flat-button color="primary" [routerLink]="['/user-edit', row.id]"><mat-icon>edit</mat-icon></a>
-							      <a mat-flat-button color="warn" (click)="deleteUser(row.id)"><mat-icon>delete</mat-icon></a>
+							      <a mat-flat-button color="warn" (click)="openDialog(row.id)"><mat-icon>delete</mat-icon></a>
+							      
+							       <!-- <a mat-flat-button color="warn" (click)="deleteUser(row.id)"><mat-icon>delete</mat-icon></a> -->
+
 							    </mat-card-actions>
 
 							    </td>

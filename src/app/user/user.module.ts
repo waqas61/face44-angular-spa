@@ -12,14 +12,14 @@ import { UserAddComponent } from './user-add/user-add.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserFormService } from './user-form.service';
 import { RouterModule, Routes } from '@angular/router';
-
+import { DialogConfirmComponent } from './../dialog-confirm/dialog-confirm.component';
 import { 
           MatInputModule,MatPaginatorModule,MatProgressSpinnerModule,MatSortModule, MatTableModule,
-          MatIconModule,MatButtonModule,MatCardModule,MatFormFieldModule 
+          MatIconModule,MatButtonModule,MatCardModule,MatFormFieldModule ,MatDialogModule
        }  from "@angular/material";
 
 @NgModule({
-  declarations: [UserListComponent, UserAddComponent,UserFormComponent],
+  declarations: [UserListComponent, UserAddComponent,UserFormComponent,DialogConfirmComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -35,6 +35,7 @@ import {
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatDialogModule,
     FormModule,
     RouterModule
   ],
@@ -44,7 +45,7 @@ import {
   exports:[
 
   ],
-  entryComponents: [ UserFormComponent ],
+  entryComponents: [ UserFormComponent,DialogConfirmComponent ],
 })
 export class UserModule {
   constructor() {

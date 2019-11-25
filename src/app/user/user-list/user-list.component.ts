@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { User } from './../user';
 import {Router} from "@angular/router";
-
-
+import { VERSION, MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
+import { DialogConfirmComponent } from './../../dialog-confirm/dialog-confirm.component';
 @Component({
 	selector: 'app-user-list',
 	templateUrl: './user-list.component.html',
@@ -16,7 +16,7 @@ export class UserListComponent implements OnInit {
 	data: Array<User> = [];
 	isLoadingResults = true;
 
-	constructor(private api: ApiService,private router: Router) { }
+	constructor(private api: ApiService,private router: Router,public dialog: MatDialog) { }
 
 	ngOnInit() {
 		this.api.getUsers().subscribe(res => {
@@ -42,6 +42,18 @@ export class UserListComponent implements OnInit {
 	    );
 	}
 
-
+	openDialog(id) {
+		const dialogRef = this.dialog.open(DialogConfirmComponent);
+		dialogRef.afterClosed().subscribe(result => {
+			if(result == true){
+			    this.data = this.data.filter((value,key)=>{
+			      return value.id != id;
+			    });
+				this.deleteUser(id);
+			}
+		});
+	}
 
 }
+
+

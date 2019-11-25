@@ -33,7 +33,6 @@ export class UserFormComponent implements OnInit, FormInterface {
             return;
         }
 		this.api.addUser(this.form.value).subscribe(res => {
-			
 			this.router.navigate(['user-list']);
 			console.log(res);
 		}, err => {
