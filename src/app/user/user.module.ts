@@ -17,9 +17,10 @@ import {
           MatInputModule,MatPaginatorModule,MatProgressSpinnerModule,MatSortModule, MatTableModule,
           MatIconModule,MatButtonModule,MatCardModule,MatFormFieldModule ,MatDialogModule
        }  from "@angular/material";
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
-  declarations: [UserListComponent, UserAddComponent,UserFormComponent,DialogConfirmComponent],
+  declarations: [UserListComponent, UserAddComponent,UserFormComponent,DialogConfirmComponent, UserEditComponent],
   imports: [
     CommonModule,
     BrowserModule,

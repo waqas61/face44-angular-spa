@@ -29,6 +29,15 @@ export class ApiService {
 	  );
 	}
 
+	editUser (id,user): Observable<any> {
+		const url = `${this.baseUri}/${id}`;
+	  	return this.http.get<User>(url, user, this.httpOptions).pipe(
+	    	catchError(this.handleError<any>('editUser'))
+	  	);
+	}
+
+
+
 	deleteUser (id): Observable<User> {
 	  const url = `${this.baseUri}/${id}`;
 
