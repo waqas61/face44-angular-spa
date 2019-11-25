@@ -28,7 +28,7 @@ export class UserFormComponent implements OnInit, FormInterface {
 		this.form = this.fcs.toFormGroup(this.form_fields);
 		if(this.edit_user_id != null){
 			console.log("Get User For Edit");
-			this.api.editUser(this.edit_user_id).subscribe(res => {
+			this.api.getUser(this.edit_user_id).subscribe(res => {
 				delete res.data.id;
 				delete res.data.created_at;
 				delete res.data.updated_at;
@@ -46,13 +46,30 @@ export class UserFormComponent implements OnInit, FormInterface {
         if (this.form.invalid) {
             return;
         }
-		this.api.addUser(this.form.value).subscribe(res => {
-			this.router.navigate(['user-list']);
-			console.log(res);
-		}, err => {
-			this.isLoadingResults = false;
-			console.log(err);
-		});
+
+        if(this.edit_user_id != null){
+			this.api.updateUser(this.edit_user_id,this.form.value).subscribe(res => {
+				this.router.navigate(['user-list']);
+				console.log(res);
+			}, err => {
+				this.isLoadingResults = false;
+				console.log(err);
+			});
+
+        }else{
+
+			this.api.addUser(this.form.value).subscribe(res => {
+				this.router.navigate(['user-list']);
+				console.log(res);
+			}, err => {
+				this.isLoadingResults = false;
+				console.log(err);
+			});
+
+        }
+
+
+
 	}
 }
 

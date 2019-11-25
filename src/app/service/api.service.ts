@@ -29,13 +29,19 @@ export class ApiService {
 	  );
 	}
 
-	editUser (id,user): Observable<any> {
+	getUser (id,user): Observable<any> {
 		const url = `${this.baseUri}/${id}`;
 	  	return this.http.get<User>(url, user, this.httpOptions).pipe(
 	    	catchError(this.handleError<any>('editUser'))
 	  	);
 	}
 
+	updateUser (id, user): Observable<any> {
+	  const url = `${this.baseUri}/${id}`;
+	  return this.http.put(url, user, this.httpOptions).pipe(
+	    catchError(this.handleError<any>('updateUser'))
+	  );
+	}
 
 
 	deleteUser (id): Observable<User> {
