@@ -27,12 +27,13 @@ export class UserFormComponent implements OnInit, FormInterface {
 	}
 
 	onSubmit() {
+	this.isLoadingResults = true;
 		this.submitted = true;
         if (this.form.invalid) {
             return;
         }
 		this.api.addUser(this.form.value).subscribe(res => {
-			this.isLoadingResults = true;
+			
 			this.router.navigate(['user-list']);
 			console.log(res);
 		}, err => {
