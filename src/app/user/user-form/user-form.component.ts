@@ -44,6 +44,7 @@ export class UserFormComponent implements OnInit, FormInterface {
 		this.isLoadingResults = true;
 		this.submitted = true;
         if (this.form.invalid) {
+        	this.isLoadingResults = false;
             return;
         }
 
