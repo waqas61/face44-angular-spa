@@ -9,7 +9,7 @@ import { User } from './../user/user';
 })
 export class ApiService {
 
-	baseUri:string = 'http://www.face44-laravel-api.com/api/user';
+	baseUri:string = 'http://127.0.0.1:8000/api/user';
   	constructor(private http: HttpClient) { }
 
 	httpOptions = {
