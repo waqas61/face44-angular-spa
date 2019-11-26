@@ -9,7 +9,7 @@ import { User } from './../user/user';
 })
 export class ApiService {
 
-	baseUri:string = 'http://127.0.0.1:8000/api/user';
+	baseUri:string = 'http://www.face44-laravel-api.com/api/user';
   	constructor(private http: HttpClient) { }
 
 	httpOptions = {
@@ -29,9 +29,9 @@ export class ApiService {
 	  );
 	}
 
-	getUser (id,user): Observable<any> {
+	getUser (id): Observable<any> {
 		const url = `${this.baseUri}/${id}`;
-	  	return this.http.get<User>(url, user, this.httpOptions).pipe(
+	  	return this.http.get<User>(url, this.httpOptions).pipe(
 	    	catchError(this.handleError<any>('editUser'))
 	  	);
 	}

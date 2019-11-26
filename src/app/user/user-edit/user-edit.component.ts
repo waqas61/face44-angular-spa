@@ -7,7 +7,7 @@ import { User } from './../user';
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.css']
 })
-export class UserEditComponent implements OnInit ,AfterViewInit,ngOnChanges {
+export class UserEditComponent implements OnInit  {
 	
   user_edit: string;
   constructor(private api: ApiService,private route: ActivatedRoute) { }
@@ -15,17 +15,8 @@ export class UserEditComponent implements OnInit ,AfterViewInit,ngOnChanges {
   ngOnInit() {
   		const id: string = this.route.snapshot.params['id'];
   		this.user_edit = id;
-		//this.api.editUser(id).subscribe(res => {
-		//	this.user = res.data;
-		//	console.log('edit ==>',this.user);
-		//}, err => {
-		//	console.log(err);
-		//});
-  }
-    ngOnChanges() {
 
   }
-    ngAfterViewInit(): void {
 
-    }
+
 }
