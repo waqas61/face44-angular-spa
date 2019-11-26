@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
 	constructor(private api: ApiService,private router: Router,public dialog: MatDialog) { }
 
 	ngOnInit() {
-		this.api.getUsers().subscribe(res => {
+		this.api.getUsers().subscribe((res: any) => {
 			this.data = res.data;
 			console.log(this.data);
 			this.isLoadingResults = false;
